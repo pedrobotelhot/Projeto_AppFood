@@ -1,9 +1,9 @@
 package food.com.br.appfood.models;
 
-public class HomeHorModel {
+public class HomeCategoriesModel {
     String name;
 
-    public HomeHorModel(String name){
+    public HomeCategoriesModel(String name){
         this.name = name;
     }
 

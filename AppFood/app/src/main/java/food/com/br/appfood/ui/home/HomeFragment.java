@@ -1,8 +1,10 @@
 package food.com.br.appfood.ui.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,38 +16,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 import food.com.br.appfood.R;
-import food.com.br.appfood.adapters.HomeHorAdapter;
-import food.com.br.appfood.models.HomeHorModel;
+import food.com.br.appfood.adapters.HomeCategoriesAdapter;
+import food.com.br.appfood.adapters.HomeFoodsAdapter;
+import food.com.br.appfood.models.HomeCategoriesModel;
+import food.com.br.appfood.models.HomeFoodsModel;
 
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView homeHorizontalRec;
-    List<HomeHorModel> homeHorModelList;
-    HomeHorAdapter homeHorAdapter;
+    RecyclerView homeCategoriesRec;
+    List<HomeCategoriesModel> homeCategoriesModelList;
+    HomeCategoriesAdapter homeCategoriesAdapter;
 
+    RecyclerView homeFoodsRec;
+    List<HomeFoodsModel> homeFoodsModelList;
+    HomeFoodsAdapter homeFoodsAdapter;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_home);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        homeHorizontalRec = root.findViewById(R.id.home_hor_rec);
+        homeCategoriesRec = root.findViewById(R.id.home_categories_rec);
 
-        homeHorModelList = new ArrayList<>();
+        homeCategoriesModelList = new ArrayList<>();
 
-        homeHorModelList.add(new HomeHorModel("All"));
-        homeHorModelList.add(new HomeHorModel("Pizza"));
-        homeHorModelList.add(new HomeHorModel("Hamburguer"));
-        homeHorModelList.add(new HomeHorModel("Sorvete"));
-        homeHorModelList.add(new HomeHorModel("Bebida"));
-        homeHorModelList.add(new HomeHorModel("Acompanhamento"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("All"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Pizza"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Hamburguer"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Sorvete"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Bebida"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Acompanhamento"));
 
-        homeHorAdapter = new HomeHorAdapter(getActivity(),homeHorModelList);
-        homeHorizontalRec.setAdapter(homeHorAdapter);
-        homeHorizontalRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
-        homeHorizontalRec.setHasFixedSize(true);
-        homeHorizontalRec.setNestedScrollingEnabled(false);
+        homeCategoriesAdapter = new HomeCategoriesAdapter(getActivity(), homeCategoriesModelList);
+        homeCategoriesRec.setAdapter(homeCategoriesAdapter);
+        homeCategoriesRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        homeCategoriesRec.setHasFixedSize(true);
+        homeCategoriesRec.setNestedScrollingEnabled(false);
+
+        homeFoodsRec = root.findViewById(R.id.home_foods_rec);
+
+
+        homeFoodsModelList = new ArrayList<>();
+
+        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
+        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
+        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
+        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
+        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
+
+        homeFoodsAdapter = new HomeFoodsAdapter(getActivity(), homeFoodsModelList);
+        homeFoodsRec.setAdapter(homeFoodsAdapter);
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        homeFoodsRec.setLayoutManager(mGridLayoutManager);
+        homeFoodsRec.setHasFixedSize(true);
+        homeFoodsRec.setNestedScrollingEnabled(false);
+
+
+
 
         return root;
     }

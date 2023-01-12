@@ -7,12 +7,19 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import java.util.List;
+
 import food.com.br.appfood.R;
 import food.com.br.appfood.databinding.ActivityMainBinding;
 import food.com.br.appfood.ui.cart.CartFragment;
 import food.com.br.appfood.ui.favorites.FavoritesFragment;
 import food.com.br.appfood.ui.home.HomeFragment;
 import food.com.br.appfood.ui.user.UserFragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
+
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

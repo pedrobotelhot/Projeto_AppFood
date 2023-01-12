@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import food.com.br.appfood.R;
-import food.com.br.appfood.models.HomeHorModel;
+import food.com.br.appfood.models.HomeCategoriesModel;
 
-public class HomeHorAdapter extends RecyclerView.Adapter<HomeHorAdapter.ViewHolder> {
+public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAdapter.ViewHolder> {
 
     Context context;
-    List<HomeHorModel> list;
+    List<HomeCategoriesModel> list;
 
-    public HomeHorAdapter(Context context, List<HomeHorModel> list){
+    public HomeCategoriesAdapter(Context context, List<HomeCategoriesModel> list){
         this.context = context;
         this.list = list;
     }
@@ -27,7 +27,7 @@ public class HomeHorAdapter extends RecyclerView.Adapter<HomeHorAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_horizontal_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_categories_item, parent, false));
 
     }
 
@@ -48,7 +48,7 @@ public class HomeHorAdapter extends RecyclerView.Adapter<HomeHorAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.hor_text);
+            name = itemView.findViewById(R.id.category_text);
         }
     }
 }

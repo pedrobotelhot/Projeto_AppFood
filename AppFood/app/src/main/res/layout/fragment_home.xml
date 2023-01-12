@@ -60,7 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_banner_home" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_hor_rec"
+                android:id="@+id/home_categories_rec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -69,11 +69,11 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/home_foods_rec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                app:layout_constraintTop_toBottomOf="@id/home_hor_rec">
+                app:layout_constraintTop_toBottomOf="@id/home_categories_rec">
 
             </androidx.recyclerview.widget.RecyclerView>
 
