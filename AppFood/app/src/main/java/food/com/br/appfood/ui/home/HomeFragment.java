@@ -18,18 +18,19 @@ import java.util.List;
 import food.com.br.appfood.R;
 import food.com.br.appfood.adapters.HomeCategoriesAdapter;
 import food.com.br.appfood.adapters.HomeFoodsAdapter;
+import food.com.br.appfood.adapters.UpdateFoodsRec;
 import food.com.br.appfood.models.HomeCategoriesModel;
 import food.com.br.appfood.models.HomeFoodsModel;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements UpdateFoodsRec {
 
     RecyclerView homeCategoriesRec;
-    List<HomeCategoriesModel> homeCategoriesModelList;
+    ArrayList<HomeCategoriesModel> homeCategoriesModelList;
     HomeCategoriesAdapter homeCategoriesAdapter;
 
     RecyclerView homeFoodsRec;
-    List<HomeFoodsModel> homeFoodsModelList;
+    ArrayList<HomeFoodsModel> homeFoodsModelList;
     HomeFoodsAdapter homeFoodsAdapter;
 
     @SuppressLint("MissingInflatedId")
@@ -38,7 +39,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -53,7 +54,7 @@ public class HomeFragment extends Fragment {
         homeCategoriesModelList.add(new HomeCategoriesModel("Bebida"));
         homeCategoriesModelList.add(new HomeCategoriesModel("Acompanhamento"));
 
-        homeCategoriesAdapter = new HomeCategoriesAdapter(getActivity(), homeCategoriesModelList);
+        homeCategoriesAdapter = new HomeCategoriesAdapter(this,getActivity(),homeCategoriesModelList);
         homeCategoriesRec.setAdapter(homeCategoriesAdapter);
         homeCategoriesRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         homeCategoriesRec.setHasFixedSize(true);
@@ -64,22 +65,24 @@ public class HomeFragment extends Fragment {
 
         homeFoodsModelList = new ArrayList<>();
 
-        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
-        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
-        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
-        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
-        homeFoodsModelList.add(new HomeFoodsModel("Pizza Mista", R.drawable.logo_appfood, 150.00, 4));
-
         homeFoodsAdapter = new HomeFoodsAdapter(getActivity(), homeFoodsModelList);
         homeFoodsRec.setAdapter(homeFoodsAdapter);
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
         homeFoodsRec.setLayoutManager(mGridLayoutManager);
-        homeFoodsRec.setHasFixedSize(true);
-        homeFoodsRec.setNestedScrollingEnabled(false);
+
 
 
 
 
         return root;
+    }
+
+    @Override
+    public void callBack(int position, ArrayList<HomeFoodsModel> list) {
+
+        homeFoodsAdapter = new HomeFoodsAdapter(getContext(),list);
+        homeFoodsAdapter.notifyDataSetChanged();
+        homeFoodsRec.setAdapter(homeFoodsAdapter);
+
     }
 }
