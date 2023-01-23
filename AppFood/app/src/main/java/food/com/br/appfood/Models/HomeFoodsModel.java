@@ -1,4 +1,4 @@
-package food.com.br.appfood.models;
+package food.com.br.appfood.Models;
 
 public class HomeFoodsModel {
 

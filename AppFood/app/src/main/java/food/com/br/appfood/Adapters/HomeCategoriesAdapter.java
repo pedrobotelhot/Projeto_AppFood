@@ -1,4 +1,4 @@
-package food.com.br.appfood.adapters;
+package food.com.br.appfood.Adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,13 +8,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import food.com.br.appfood.R;
-import food.com.br.appfood.models.HomeCategoriesModel;
-import food.com.br.appfood.models.HomeFoodsModel;
+import food.com.br.appfood.Models.HomeCategoriesModel;
+import food.com.br.appfood.Models.HomeFoodsModel;
+import retrofit2.Callback;
 
 public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAdapter.ViewHolder> {
 
@@ -28,6 +31,11 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
     public HomeCategoriesAdapter(UpdateFoodsRec updateFoodsRec, Activity activity, ArrayList<HomeCategoriesModel> list) {
         this.updateFoodsRec = updateFoodsRec;
+        this.activity = activity;
+        this.list = list;
+    }
+
+    public HomeCategoriesAdapter( FragmentActivity activity, List<HomeCategoriesModel> model) {
         this.activity = activity;
         this.list = list;
     }

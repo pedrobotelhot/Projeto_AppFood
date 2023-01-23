@@ -1,4 +1,4 @@
-package food.com.br.appfood.ui;
+package food.com.br.appfood.Ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 

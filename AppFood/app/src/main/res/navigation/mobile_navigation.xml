@@ -17,22 +17,22 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="food.com.br.appfood.ui.home.HomeFragment"
+        android:name="food.com.br.appfood.Ui.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="food.com.br.appfood.ui.favorites.FavoritesFragment"
+        android:name="food.com.br.appfood.Ui.Favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="food.com.br.appfood.ui.cart.CartFragment"
+        android:name="food.com.br.appfood.Ui.Cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/userFragment"
-        android:name="food.com.br.appfood.ui.user.UserFragment"
+        android:name="food.com.br.appfood.Ui.User.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
 </navigation>

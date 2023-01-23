@@ -1,7 +1,6 @@
-package food.com.br.appfood.adapters;
+package food.com.br.appfood.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import food.com.br.appfood.R;
 
-import food.com.br.appfood.models.HomeFoodsModel;
-import food.com.br.appfood.ui.Details_Food;
+import food.com.br.appfood.Models.HomeFoodsModel;
 
 public class HomeFoodsAdapter extends RecyclerView.Adapter<HomeFoodsAdapter.ViewHolder> {
 
