@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import food.com.br.appfood.R;
@@ -33,8 +35,9 @@ public class HomeFoodsAdapter extends RecyclerView.Adapter<HomeFoodsAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeFoodsAdapter.ViewHolder holder, int position) {
-        holder.img.setImageResource(list.get(position).getImg());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String imageUrl = list.get(position).getImg();
+        Picasso.get().load(imageUrl).into(holder.img);
         holder.name.setText(list.get(position).getName());
         holder.price.setText(String.valueOf(list.get(position).getPrice()));
         holder.rate.setText(String.valueOf(list.get(position).getRate()));

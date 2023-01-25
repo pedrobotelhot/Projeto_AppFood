@@ -52,31 +52,28 @@ public class HomeFragment extends Fragment implements UpdateFoodsRec {
 
         homeCategoriesRec = root.findViewById(R.id.home_categories_rec);
 
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("https://free-food-menus-api.onrender.com/")
-                .addConverterFactory(GsonConverterFactory.create());
+        homeCategoriesModelList = new ArrayList<>();
 
-        Retrofit retrofit = builder.build();
+        homeCategoriesModelList.add(new HomeCategoriesModel("All"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Best Foods"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Breads"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Burgers"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Chocolates"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Desserts"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Drinks"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Fried Chicken"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Ice Cream"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Pizzas"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Porks"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Sandwiches"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Sausages"));
+        homeCategoriesModelList.add(new HomeCategoriesModel("Steaks"));
 
-        HomeCategoriesMenu categories = retrofit.create(HomeCategoriesMenu.class);
-        Call<List<HomeCategoriesModel>> call = categories.categoriesForMenu();
-
-        call.enqueue(new Callback<List<HomeCategoriesModel>>() {
-            @Override
-            public void onResponse(Call<List<HomeCategoriesModel>> call, Response<List<HomeCategoriesModel>> response) {
-                List<HomeCategoriesModel> model = response.body();
-                homeCategoriesAdapter = new HomeCategoriesAdapter(getActivity(),model);
-                homeCategoriesRec.setAdapter(homeCategoriesAdapter);
-                homeCategoriesRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
-                homeCategoriesRec.setHasFixedSize(true);
-                homeCategoriesRec.setNestedScrollingEnabled(false);
-            }
-
-            @Override
-            public void onFailure(Call<List<HomeCategoriesModel>> call, Throwable t) {
-                Toast.makeText(getActivity(), "error :(", Toast.LENGTH_SHORT).show();
-            }
-        });
+        homeCategoriesAdapter = new HomeCategoriesAdapter(this,getActivity(),homeCategoriesModelList);
+        homeCategoriesRec.setAdapter(homeCategoriesAdapter);
+        homeCategoriesRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        homeCategoriesRec.setHasFixedSize(true);
+        homeCategoriesRec.setNestedScrollingEnabled(false);
 
 
         homeFoodsRec = root.findViewById(R.id.home_foods_rec);
