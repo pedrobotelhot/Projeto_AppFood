@@ -59,7 +59,7 @@ public class HomeFoodsAdapter extends RecyclerView.Adapter<HomeFoodsAdapter.View
             super(itemView);
 
             img = itemView.findViewById(R.id.food_img_cardFood);
-            name = itemView.findViewById(R.id.text_name_cardFood);
+            name = itemView.findViewById(R.id.text_name_details_food);
             price = itemView.findViewById(R.id.text_price_cardFood);
             rate = itemView.findViewById(R.id.text_rate_cardFood);
         }
